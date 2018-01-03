@@ -1,8 +1,9 @@
 #include <iostream>
+#include "sorts.h"
+
 using namespace std;
 
-void bubble_sort(int *arr, int length)
-{
+void bubble_sort(int *arr, int length) {
     for (int i = 0 ; i < length ; i++)
         for (int j = i + 1 ; j < length ; j++)
             if (arr[j] < arr[i])
@@ -11,8 +12,7 @@ void bubble_sort(int *arr, int length)
             }
 }
 
-int partition_sort(int *arr, int left_pointer, int right_pointer) //for quick_sort
-{
+int partition_sort(int *arr, int left_pointer, int right_pointer) {
     int middle_element = arr[left_pointer], i = left_pointer - 1, j = right_pointer + 1;
     while (true)
     {
@@ -27,8 +27,7 @@ int partition_sort(int *arr, int left_pointer, int right_pointer) //for quick_so
     }
 }
 
-void quick_sort(int *arr, int left_pointer, int right_pointer)
-{
+void quick_sort(int *arr, int left_pointer, int right_pointer) {
     if (left_pointer < right_pointer)
     {
         int middle_element = partition_sort(arr, left_pointer, right_pointer);
@@ -37,8 +36,7 @@ void quick_sort(int *arr, int left_pointer, int right_pointer)
     }
 }
 
-void selection_sort(int *arr, int length)
-{
+void selection_sort(int *arr, int length) {
     for(int i = length - 1; i >= 0; i--)
     {
         int max_position = 0;
@@ -51,8 +49,7 @@ void selection_sort(int *arr, int length)
     }
 }
 
-void insertion_sort(int *arr, int length)
-{
+void insertion_sort(int *arr, int length) {
     for(int i = 0; i < length; i++)
     {
         int current_position = arr[i];
@@ -66,8 +63,7 @@ void insertion_sort(int *arr, int length)
     }
 }
 
-void merge(int *arr, int left_pointer, int middle_element, int right_pointer)
-{
+void merge(int *arr, int left_pointer, int middle_element, int right_pointer) {
     int it1 = 0, it2 = 0;
     int *result = new int[right_pointer - left_pointer];
 
@@ -97,10 +93,10 @@ void merge(int *arr, int left_pointer, int middle_element, int right_pointer)
 
     for (int i = 0; i < it1 + it2; i++)
         arr[left_pointer + i] = result[i];
+    delete[] result;
 }
 
-void merge_sort(int *arr, int left_pointer, int right_pointer)
-{
+void merge_sort(int *arr, int left_pointer, int right_pointer) {
     if(left_pointer - right_pointer < -1)
     {
         int middle_element = (left_pointer + right_pointer) / 2;
